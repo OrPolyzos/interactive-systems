@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ProximityInteraction : MonoBehaviour
@@ -25,12 +26,16 @@ public class ProximityInteraction : MonoBehaviour
     }
 
     void Update()
-    {
+    { 
         if (Vector3.Distance(player.transform.position, myself.transform.position) < distance)
         {
             interactionCanvas.GetComponent<Text>().text = string.Format(interactionCanvasText, interactionCanvasTextColor);
             interactionCanvas.GetComponent<Text>().enabled = true;
             wasEnabledByMe = true;
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                SceneManager.LoadScene("FlappyFly");
+            }
         }
         else if (wasEnabledByMe)
         {
