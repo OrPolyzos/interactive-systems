@@ -6,12 +6,13 @@ using UnityEngine.UI;
 
 public class ProximityInteraction : MonoBehaviour
 {
+    public string sceneName;
     private GameObject interactionCanvas;
     private readonly string interactionCanvasText = "<color=\"white\"><b>Play</b></color> <color=\"{0}\">(F)</color>";
     private GameObject player;
 
 
-    public float distance = 2f;
+    public float distance = 2.5f;
     public string interactionCanvasTextColor = "black";
 
     private GameObject myself;
@@ -34,7 +35,7 @@ public class ProximityInteraction : MonoBehaviour
             wasEnabledByMe = true;
             if (Input.GetKeyDown(KeyCode.F))
             {
-                SceneManager.LoadScene("FlappyFly");
+                SceneManager.LoadScene(sceneName);
             }
         }
         else if (wasEnabledByMe)
