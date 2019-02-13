@@ -5,6 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - InteractionCanvas
+  - InterractionCanvas
+  - TargetWhite
+  - TargetBlack
+  - TargetYellow
+  - TargetRed
+  - TargetBlue
+  - EvilRabbit
+  - GoodRabbit
   layers:
   - Default
   - TransparentFX
