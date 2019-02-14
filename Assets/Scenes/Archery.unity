@@ -5752,6 +5752,16 @@ PrefabInstance:
       propertyPath: arrowMiss
       value: 
       objectReference: {fileID: 1328195051}
+    - target: {fileID: 5450352870858879294, guid: ecc2fe90d7cab7049a2c280849a87e7b,
+        type: 3}
+      propertyPath: textScore
+      value: 
+      objectReference: {fileID: 1421582952}
+    - target: {fileID: 5450352870858879294, guid: ecc2fe90d7cab7049a2c280849a87e7b,
+        type: 3}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 1421582952}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecc2fe90d7cab7049a2c280849a87e7b, type: 3}
 --- !u!4 &148175259 stripped
@@ -49535,6 +49545,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec78ebca7517fb745a45a931cb06d2bd, type: 3}
+--- !u!1 &1421582952 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4020251552891590634, guid: 89f3df8f2973e0c4e99a9e3961db7abc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1996836679}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1422069662
 PrefabInstance:
   m_ObjectHideFlags: 0

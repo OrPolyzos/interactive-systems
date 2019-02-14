@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Visyde
 {
@@ -17,6 +18,10 @@ namespace Visyde
         Vector3 fireDirection;
         Vector3 firePoint;
 
+        public GameObject scoreText;
+        public int maxPlayerScore = 15;
+        private int playerScore;
+
         // Use this for initialization
         void Start()
         {
@@ -28,7 +33,6 @@ namespace Visyde
         // Update is called once per frame
         void Update()
         {
-
             // FPS mouse look:
             rotationX += Input.GetAxis("Mouse X") * 2;
             rotationY -= Input.GetAxis("Mouse Y") * 2;
@@ -36,7 +40,13 @@ namespace Visyde
             transform.rotation = rotation;
 
             // Call raycast method:
+            if (playerScore == maxPlayerScore)
+            {
+                scoreText.GetComponent<Text>().text = "<color=\"Red\">You win!</color>";
+                return;
+            }
             Hit();
+            scoreText.GetComponent<Text>().text = "Score: " + playerScore + "/" + maxPlayerScore;
         }
 
         void Hit()
@@ -53,13 +63,22 @@ namespace Visyde
                 {
                     if (hit.transform.tag == "GoodRabbit")
                     {
+                        if (playerScore > 0)
+                        {
+                            playerScore--;
+                        }
                         arrowHit.Play();
                         hit.transform.gameObject.GetComponent<RabbitRun>().Die();
                     }
                     else if (hit.transform.tag == "EvilRabbit")
                     {
+                        if (playerScore < maxPlayerScore)
+                        {
+                            playerScore++;
+                        }
                         arrowHit.Play();
                         hit.transform.gameObject.GetComponent<RabbitRun>().Die();
+
                     }
                     else
                     {
