@@ -7,6 +7,8 @@ public class RabbitRun : MonoBehaviour
 
     private string[] m_buttonNames = new string[] { "Idle", "Run", "Dead" };
 
+    private bool isDead = false;
+
     private Animator m_animator;
 
     // Use this for initialization
@@ -26,9 +28,18 @@ public class RabbitRun : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //If this tag is evilrabbit add points, if this tag is good remove points
-        m_animator.SetTrigger("Next");
-        m_animator.SetInteger("AnimIndex", 3);
-        Destroy(gameObject, 2);
+        Die();
+    }
+
+    public void Die()
+    {
+        if (!isDead)
+        {
+            isDead = true;
+            //If this tag is evilrabbit add points, if this tag is good remove points
+            m_animator.SetTrigger("Next");
+            m_animator.SetInteger("AnimIndex", 2);
+            Destroy(gameObject, 2);
+        }
     }
 }
