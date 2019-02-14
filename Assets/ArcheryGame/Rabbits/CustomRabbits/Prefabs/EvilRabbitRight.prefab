@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 6824828219441350821}
   - component: {fileID: 5096929509684568913}
   m_Layer: 0
-  m_Name: EvilRabbitRight 1
+  m_Name: EvilRabbitRight
   m_TagString: EvilRabbit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
