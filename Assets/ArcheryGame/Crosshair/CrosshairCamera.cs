@@ -7,6 +7,8 @@ namespace Visyde
     public class CrosshairCamera : MonoBehaviour
     {
 
+        public AudioSource arrowHit;
+        public AudioSource arrowMiss;
         // For the FPS mouse look:
         float rotationX = 0F;
         float rotationY = 0F;
@@ -51,11 +53,17 @@ namespace Visyde
                 {
                     if (hit.transform.tag == "GoodRabbit")
                     {
+                        arrowHit.Play();
                         hit.transform.gameObject.GetComponent<RabbitRun>().Die();
                     }
                     else if (hit.transform.tag == "EvilRabbit")
                     {
+                        arrowHit.Play();
                         hit.transform.gameObject.GetComponent<RabbitRun>().Die();
+                    }
+                    else
+                    {
+                        arrowMiss.Play();
                     }
                 }
             }
