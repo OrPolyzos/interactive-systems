@@ -13,6 +13,7 @@ TagManager:
   - TargetBlue
   - EvilRabbit
   - GoodRabbit
+  - Bottle
   layers:
   - Default
   - TransparentFX
