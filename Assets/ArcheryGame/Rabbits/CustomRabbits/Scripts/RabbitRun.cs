@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RabbitRun : MonoBehaviour
 {
-
-    private string[] m_buttonNames = new string[] { "Idle", "Run", "Dead" };
+    public Transform explosionEffect;
+    private bool isDead = false;
 
     private Animator m_animator;
 
@@ -13,7 +13,6 @@ public class RabbitRun : MonoBehaviour
     void Start()
     {
         m_animator = GetComponent<Animator>();
-        // starts running
         m_animator.SetTrigger("Next");
         m_animator.SetInteger("AnimIndex", 1);
     }
@@ -26,9 +25,15 @@ public class RabbitRun : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //If this tag is evilrabbit add points, if this tag is good remove points
-        m_animator.SetTrigger("Next");
-        m_animator.SetInteger("AnimIndex", 3);
-        Destroy(gameObject, 2);
+        Die();
+    }
+
+    public void Die()
+    {
+        if (!isDead)
+        {
+            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            Destroy(gameObject, 0);
+        }
     }
 }

@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 6824828219441350821}
   - component: {fileID: 5096929509684568913}
   m_Layer: 0
-  m_Name: EvilRabbitRight 1
+  m_Name: EvilRabbitRight
   m_TagString: EvilRabbit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -439,6 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41fe2d2f2e39f8c449c5f8d65f5bab9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionEffect: {fileID: 2095308691, guid: eca68c39659803e41b74cee0089455bd, type: 3}
 --- !u!65 &5096929509684568913
 BoxCollider:
   m_ObjectHideFlags: 0
