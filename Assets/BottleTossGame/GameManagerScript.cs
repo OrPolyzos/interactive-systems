@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class GameManagerScript : MonoBehaviour
 {
+    public String itemsText;
     public String sceneName;
     public GameObject scoreCanvas;
     public GameObject timeCanvas;
@@ -57,7 +58,7 @@ public class GameManagerScript : MonoBehaviour
                         timeSpan.Minutes,
                         timeSpan.Seconds);
         timeCanvas.GetComponent<Text>().text = time;
-        scoreCanvas.GetComponent<Text>().text = string.Format("{0}/{1} bottles", score, maxScore);
+        scoreCanvas.GetComponent<Text>().text = string.Format("{0}/{1} {2}", score, maxScore, itemsText);
     }
 
     void CountDown()
@@ -73,6 +74,14 @@ public class GameManagerScript : MonoBehaviour
         if (score < maxScore)
         {
             score++;
+        }
+    }
+
+    public void DecreaseScore()
+    {
+        if (score > 0)
+        {
+            score--;
         }
     }
 }

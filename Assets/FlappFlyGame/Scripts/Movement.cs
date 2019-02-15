@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Movement : MonoBehaviour 
 {
+    public GameObject gameOverCanvas;
     private static readonly float MAX_POS_Y = 110F;
     private static readonly float TOP_DELTA_VALUE = 400F;
     private static readonly float ROTATION_SPEED = 250F;
@@ -27,6 +29,8 @@ public class Movement : MonoBehaviour
     int rotationDirection = 1;
 
     private Vector3 lastPos = Vector3.zero;
+    private bool lost;
+    private bool won;
 
     void Start()
     {
@@ -37,6 +41,37 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        if (lost)
+        {
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            gameOverCanvas.GetComponent<Text>().text = "<b>You Lost!</b>\n<color=\"White\"> Press R to play again</color>\n<color=\"Red\">Press ESC to go back</color>";
+            gameOverCanvas.SetActive(true);
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                SceneManager.LoadScene("RoomScene");
+            }
+            else if (Input.GetKey(KeyCode.R))
+            {
+                SceneManager.LoadScene("FlappyFly");
+            }
+            return;
+        }
+        else if (won)
+        {
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            gameOverCanvas.GetComponent<Text>().text = "<b>Congratulations! You Won!</b>\n<color=\"White\"> Press R to play again</color>\n<color=\"Red\">Press ESC to go back</color>";
+            gameOverCanvas.SetActive(true);
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                SceneManager.LoadScene("RoomScene");
+            }
+            else if (Input.GetKey(KeyCode.R))
+            {
+                SceneManager.LoadScene("FlappyFly");
+            }
+            return;
+        }
+
         float posY = Mathf.Clamp(transform.position.y, 0, MAX_POS_Y);
         transform.position = new Vector3(transform.position.x, posY, transform.position.z + PLAYER_SPEED);
 
@@ -65,8 +100,15 @@ public class Movement : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {   
-        collisionSound.Play();
-        UnityEngine.SceneManagement.SceneManager.LoadScene("FlappyFly");
+        if (collision.gameObject.tag == "End")
+        {
+            won = true;
+        }
+        else
+        {
+            lost = true;
+            collisionSound.Play();
+        }
     }
 
     
