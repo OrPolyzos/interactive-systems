@@ -12,9 +12,9 @@ public class GameManagerScript : MonoBehaviour
     public GameObject scoreCanvas;
     public GameObject timeCanvas;
     public GameObject gameOverCanvas;
-
+    public AudioSource WinSound;
     private int score = 0;
-    public int maxScore = 20;
+    public int maxScore = 1;
     public float timeLeftInSec = 5 * 60;
     // Start is called before the first frame update
     void Start()
@@ -73,10 +73,15 @@ public class GameManagerScript : MonoBehaviour
     {
         if (score < maxScore)
         {
-            score++;
+            score++;                       
         }
+        
+        if (score == maxScore)
+            {
+                WinSound.Play();
+            }
     }
-
+          
     public void DecreaseScore()
     {
         if (score > 0)

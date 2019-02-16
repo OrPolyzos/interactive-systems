@@ -8,6 +8,8 @@ public class BottleTossMovement : MonoBehaviour
     public float force = 2f;
     public bool isTarget = false;
     public float zFactor = 2f;
+    public AudioSource ThrowSound;
+    public AudioSource HitSound;
  
     public Vector3 startPosition;
  
@@ -43,6 +45,7 @@ public class BottleTossMovement : MonoBehaviour
                     wasMoved = true;
                     isTarget = false;
                     Swipe();
+                    ThrowSound.Play();
 	            }
 	        }
     	}
@@ -74,6 +77,7 @@ public class BottleTossMovement : MonoBehaviour
         {
             gameManager.GetComponent<GameManagerScript>().IncreaseScore();
             collision.gameObject.tag = "None";
+            HitSound.Play();
         }
     }
 }

@@ -17,7 +17,7 @@ public class Movement : MonoBehaviour
     public Rigidbody player;
     public AudioSource flapSound;
     public AudioSource collisionSound;
-
+    public AudioSource WinSound;
     public Transform leftWing;
     public Transform rightWing;
 
@@ -105,6 +105,7 @@ public class Movement : MonoBehaviour
         if (collision.gameObject.tag == "End")
         {
             won = true;
+            WinSound.Play();
         }
         else
         {
