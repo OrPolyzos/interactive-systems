@@ -17,6 +17,8 @@ public class PressurePad : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.None;
         doorUpperLimit = doorToSlide.transform.position.y + doorToSlide.transform.lossyScale.y * 2;
         doorLowerLimit = doorToSlide.transform.position.y;
     }
