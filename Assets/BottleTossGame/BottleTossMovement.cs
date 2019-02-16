@@ -21,6 +21,8 @@ public class BottleTossMovement : MonoBehaviour
  
     // Use this for initialization
     void Start () {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         startPosition = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
     }
    

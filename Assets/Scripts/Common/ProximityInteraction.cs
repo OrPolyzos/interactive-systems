@@ -20,7 +20,9 @@ public class ProximityInteraction : MonoBehaviour
     private bool wasEnabledByMe = false;
 
     void Start()
-    { 
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = false;
         interactionCanvas = GameObject.FindWithTag("InteractionCanvas");
         player = GameObject.FindWithTag("Player");
         myself = transform.gameObject;
@@ -35,7 +37,7 @@ public class ProximityInteraction : MonoBehaviour
             wasEnabledByMe = true;
             if (Input.GetKeyDown(KeyCode.F))
             {
-                SceneManager.LoadScene(sceneName);
+                SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
             }
         }
         else if (wasEnabledByMe)

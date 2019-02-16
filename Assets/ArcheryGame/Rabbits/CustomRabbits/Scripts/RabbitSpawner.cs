@@ -12,6 +12,8 @@ public class RabbitSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         InvokeRepeating("InstantiateEvilRabbit", 0, 5);
         InvokeRepeating("InstantiateGoodRabbit", 0, 3);
     }

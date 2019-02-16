@@ -25,17 +25,23 @@ public class GameManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        TimeSpan timeSpan = TimeSpan.FromSeconds(timeLeftInSec);
+        string time = string.Format("{0:D2}m:{1:D2}s",
+                        timeSpan.Minutes,
+                        timeSpan.Seconds);
+        timeCanvas.GetComponent<Text>().text = time;
+        scoreCanvas.GetComponent<Text>().text = string.Format("{0}/{1} {2}", score, maxScore, itemsText);
         if (timeLeftInSec <= 0)
         {
             gameOverCanvas.GetComponent<Text>().text = "<b>You Lost!</b>\n<color=\"White\"> Press R to play again</color>\n<color=\"Red\">Press ESC to go back</color>";
             gameOverCanvas.SetActive(true);
             if (Input.GetKey(KeyCode.Escape))
             {
-                SceneManager.LoadScene("RoomScene");
+                SceneManager.LoadScene("RoomScene", LoadSceneMode.Single);
             }
             else if (Input.GetKey(KeyCode.R))
             {
-                SceneManager.LoadScene(sceneName);
+                SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
             }
             return;
         }
@@ -45,20 +51,14 @@ public class GameManagerScript : MonoBehaviour
             gameOverCanvas.SetActive(true);
             if (Input.GetKey(KeyCode.Escape))
             {
-                SceneManager.LoadScene("RoomScene");
+                SceneManager.LoadScene("RoomScene", LoadSceneMode.Single);
             }
             else if (Input.GetKey(KeyCode.R))
             {
-                SceneManager.LoadScene(sceneName);
+                SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
             }
             return;
         }
-        TimeSpan timeSpan = TimeSpan.FromSeconds(timeLeftInSec);
-        string time = string.Format("{0:D2}m:{1:D2}s",
-                        timeSpan.Minutes,
-                        timeSpan.Seconds);
-        timeCanvas.GetComponent<Text>().text = time;
-        scoreCanvas.GetComponent<Text>().text = string.Format("{0}/{1} {2}", score, maxScore, itemsText);
     }
 
     void CountDown()

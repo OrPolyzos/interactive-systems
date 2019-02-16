@@ -15,6 +15,7 @@ TagManager:
   - GoodRabbit
   - Bottle
   - End
+  - None
   layers:
   - Default
   - TransparentFX

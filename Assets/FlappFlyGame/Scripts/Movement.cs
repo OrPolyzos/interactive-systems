@@ -34,6 +34,8 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = false;
         initialLeftWing = leftWing.transform.rotation;
         initialRifghtWing = rightWing.transform.rotation;
     }
@@ -48,11 +50,11 @@ public class Movement : MonoBehaviour
             gameOverCanvas.SetActive(true);
             if (Input.GetKey(KeyCode.Escape))
             {
-                SceneManager.LoadScene("RoomScene");
+                SceneManager.LoadScene("RoomScene", LoadSceneMode.Single);
             }
             else if (Input.GetKey(KeyCode.R))
             {
-                SceneManager.LoadScene("FlappyFly");
+                SceneManager.LoadScene("FlappyFly", LoadSceneMode.Single);
             }
             return;
         }
@@ -63,11 +65,11 @@ public class Movement : MonoBehaviour
             gameOverCanvas.SetActive(true);
             if (Input.GetKey(KeyCode.Escape))
             {
-                SceneManager.LoadScene("RoomScene");
+                SceneManager.LoadScene("RoomScene", LoadSceneMode.Single);
             }
             else if (Input.GetKey(KeyCode.R))
             {
-                SceneManager.LoadScene("FlappyFly");
+                SceneManager.LoadScene("FlappyFly", LoadSceneMode.Single);
             }
             return;
         }
