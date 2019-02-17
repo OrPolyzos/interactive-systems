@@ -15991,8 +15991,9 @@ GameObject:
   - component: {fileID: 1240432356}
   - component: {fileID: 1240432355}
   - component: {fileID: 1240432354}
+  - component: {fileID: 1240432358}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: WinTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16070,6 +16071,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1240432358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240432353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c376f3346ef3fcf4881c3e99c64dbf2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 4021749494095299262}
+  player: {fileID: 311983114}
 --- !u!1 &1243800104
 GameObject:
   m_ObjectHideFlags: 0
@@ -26962,7 +26977,7 @@ MonoBehaviour:
   sceneName: Maze
   timeCanvas: {fileID: 4021749493799517145}
   gameOverCanvas: {fileID: 4021749494190414538}
-  WinSound: {fileID: 0}
+  WinSound: {fileID: 4021749494095299263}
   player: {fileID: 311983114}
   timeLeftInSec: 45
   hasWon: 0
