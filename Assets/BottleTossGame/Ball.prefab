@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1823008365}
   - component: {fileID: 1823008364}
   m_Layer: 0
-  m_Name: Ball 1
+  m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f16dd269c9729d649aa6589cc07027cd, type: 2}
+  - {fileID: 2100000, guid: b43e5571a9fe23946bf3070cdfceb1b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -105,9 +105,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8d95cae64134b9e88109d0cfb1e5fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   force: 20
   isTarget: 0
   zFactor: 1
+  ThrowSound: {fileID: 0}
+  HitSound: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   rigidbody: {fileID: 1823008364}
   tossPrefab: {fileID: 1823008362}
