@@ -16,6 +16,8 @@ TagManager:
   - Bottle
   - End
   - None
+  - ExcludeTeleport
+  - GameManager
   layers:
   - Default
   - TransparentFX

@@ -14,7 +14,13 @@ public class RabbitSpawner : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        InvokeRepeating("InstantiateEvilRabbit", 0, 5);
+        Physics.IgnoreCollision(prefabEvilRabbitLeft.GetComponent<Collider>(), prefabEvilRabbitRight.GetComponent<Collider>());
+        Physics.IgnoreCollision(prefabEvilRabbitLeft.GetComponent<Collider>(), prefabGoodRabbitRight.GetComponent<Collider>());
+
+        Physics.IgnoreCollision(prefabGoodRabbitLeft.GetComponent<Collider>(), prefabGoodRabbitRight.GetComponent<Collider>());
+        Physics.IgnoreCollision(prefabGoodRabbitLeft.GetComponent<Collider>(), prefabEvilRabbitRight.GetComponent<Collider>());
+
+        InvokeRepeating("InstantiateEvilRabbit", 0, 3);
         InvokeRepeating("InstantiateGoodRabbit", 0, 3);
     }
 
