@@ -7,7 +7,7 @@
         protected virtual void Awake()
         {
             Transform cameraRigTransform = transform.Find("VRSimulatorCameraRig");
-            cameraRigTransform.position -= transform.position;
+            //cameraRigTransform.position -= transform.position;
         }
     }
 }

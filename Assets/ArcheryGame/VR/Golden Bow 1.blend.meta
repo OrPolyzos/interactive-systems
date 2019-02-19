@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e71bb850b645e8f4980d5759f40c4b08
+guid: 9a7ab5b6651a25e41891ae6778382c05
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -69,23 +69,7 @@ ModelImporter:
     7400000: Default Take
     9500000: //RootNode
     13700000: Cylinder_001
-    2186277476908879412: ImportLogs
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Metal
-    second: {fileID: 2100000, guid: 91619c69cd8d5544683f5b15b5744286, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: String
-    second: {fileID: 2100000, guid: 17be660b52730ea4a9b24714ff3c1cbb, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wood
-    second: {fileID: 2100000, guid: 6ffaeb82056a59d41928ef525931f418, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
