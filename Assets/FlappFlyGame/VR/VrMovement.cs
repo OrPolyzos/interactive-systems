@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-public class VrMovement : MonoBehaviour 
+public class VrMovement : MonoBehaviour
 {
-    public GameObject gameOverCanvas;
+    public GameObject gameManager;
     private static readonly float MAX_POS_Y = 110F;
     private static readonly float TOP_DELTA_VALUE = 400F;
     private static readonly float ROTATION_SPEED = 250F;
@@ -57,14 +57,16 @@ public class VrMovement : MonoBehaviour
     void Update()
     {
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + PLAYER_SPEED);
+
+
         leftDevice = SteamVR_Controller.Input((int)leftTracked.index);
         rightDevice = SteamVR_Controller.Input((int)rightTracked.index);
         float leftVelocity = leftDevice.velocity.magnitude;
         float rightVelocity = rightDevice.velocity.magnitude;
         float velocity = Mathf.Max(leftVelocity, rightVelocity);
-        if (leftVelocity> 1F)
+        if (leftVelocity > 1F)
         {
-            player.AddForce(new Vector3(0, leftVelocity* 25, 0));
+            player.AddForce(new Vector3(0, leftVelocity * 25, 0));
         }
 
 
@@ -88,51 +90,18 @@ public class VrMovement : MonoBehaviour
         if (lost)
         {
             gameObject.GetComponent<Rigidbody>().isKinematic = true;
-            gameOverCanvas.GetComponent<Text>().text = "<b>You Lost!</b>\n<color=\"White\"> Press R to play again</color>\n<color=\"Red\">Press ESC to go back</color>";
-            gameOverCanvas.SetActive(true);
-            if (Input.GetKey(KeyCode.Escape))
-            {
-                SceneManager.LoadScene("RoomScene", LoadSceneMode.Single);
-            }
-            else if (Input.GetKey(KeyCode.R))
-            {
-                SceneManager.LoadScene("FlappyFly", LoadSceneMode.Single);
-            }
-            return;
+            gameManager.GetComponent<FFGameManager>().hasLost = true;
         }
         else if (won)
         {
             gameObject.GetComponent<Rigidbody>().isKinematic = true;
-            gameOverCanvas.GetComponent<Text>().text = "<b>Congratulations! You Won!</b>\n<color=\"White\"> Press R to play again</color>\n<color=\"Red\">Press ESC to go back</color>";
-            gameOverCanvas.SetActive(true);
-            if (Input.GetKey(KeyCode.Escape))
-            {
-                SceneManager.LoadScene("RoomScene", LoadSceneMode.Single);
-            }
-            else if (Input.GetKey(KeyCode.R))
-            {
-                SceneManager.LoadScene("FlappyFly", LoadSceneMode.Single);
-            }
-            return;
+            gameManager.GetComponent<FFGameManager>().hasWon = true;
         }
-
-
-
-        //float posY = Mathf.Clamp(transform.position.y, 0, MAX_POS_Y);
-        //transform.position = new Vector3(transform.position.x, posY, transform.position.z + PLAYER_SPEED);
-
-        //Vector3 cur = leftController.GetComponent<SteamVR_TrackedObject>().transform.position;
-        //float delta = System.Math.Min(TOP_DELTA_VALUE, System.Math.Abs((cur - lastPos).y)) * 50;
-        //Debug.Log(delta);
-
-
-
-        //player.AddForce(new Vector3(0, delta, 0));
 
         lastPos = leftController.GetComponent<SteamVR_TrackedObject>().transform.position;
     }
     void OnCollisionEnter(Collision collision)
-    {   
+    {
         if (collision.gameObject.tag == "End")
         {
             won = true;
@@ -145,5 +114,5 @@ public class VrMovement : MonoBehaviour
         }
     }
 
-    
+
 }

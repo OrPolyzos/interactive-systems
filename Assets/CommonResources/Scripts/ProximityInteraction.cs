@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using VRTK;
 
 public class ProximityInteraction : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class ProximityInteraction : MonoBehaviour
     public string interactionCanvasTextColor = "black";
 
     private GameObject myself;
+    public GameObject leftController;
+    public GameObject rightController; 
 
     private bool wasEnabledByMe = false;
 
@@ -35,7 +38,7 @@ public class ProximityInteraction : MonoBehaviour
             interactionCanvas.GetComponent<Text>().text = string.Format(interactionCanvasText, interactionCanvasTextColor);
             interactionCanvas.GetComponent<Text>().enabled = true;
             wasEnabledByMe = true;
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F) || leftController.GetComponent<VRTK_ControllerEvents>().touchpadPressed || rightController.GetComponent<VRTK_ControllerEvents>().touchpadPressed)
             {
                 SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
             }

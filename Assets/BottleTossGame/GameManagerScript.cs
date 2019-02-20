@@ -4,11 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using VRTK;
 
 public class GameManagerScript : MonoBehaviour
 {
     public String itemsText;
     public String sceneName;
+
+    public GameObject leftCon;
+    public GameObject rightCon;
+
+
     public GameObject scoreCanvas;
     public GameObject timeCanvas;
     public GameObject gameOverCanvas;
@@ -33,32 +39,21 @@ public class GameManagerScript : MonoBehaviour
         scoreCanvas.GetComponent<Text>().text = string.Format("{0}/{1} {2}", score, maxScore, itemsText);
         if (timeLeftInSec <= 0)
         {
-            gameOverCanvas.GetComponent<Text>().text = "<b>You Lost!</b>\n<color=\"White\"> Press R to play again</color>\n<color=\"Red\">Press ESC to go back</color>";
-            gameOverCanvas.SetActive(true);
-            if (Input.GetKey(KeyCode.Escape))
-            {
-                SceneManager.LoadScene("RoomScene", LoadSceneMode.Single);
-            }
-            else if (Input.GetKey(KeyCode.R))
-            {
-                SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
-            }
-            return;
+            gameOverCanvas.GetComponent<Text>().text = "<b>Game Over! You Lost!</b>";
         }
         else if (score == maxScore)
         {
-            gameOverCanvas.GetComponent<Text>().text = "<b>Congratulations! You Won!</b>\n<color=\"White\"> Press R to play again</color>\n<color=\"Red\">Press ESC to go back</color>";
-            gameOverCanvas.SetActive(true);
-            if (Input.GetKey(KeyCode.Escape))
-            {
-                SceneManager.LoadScene("RoomScene", LoadSceneMode.Single);
-            }
-            else if (Input.GetKey(KeyCode.R))
-            {
-                SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
-            }
-            return;
+            gameOverCanvas.GetComponent<Text>().text = "<b>Congratulations! You Won!</b>";
         }
+        if (leftCon.GetComponent<VRTK_ControllerEvents>().touchpadPressed)
+        {
+            SceneManager.LoadScene("RoomScene", LoadSceneMode.Single);
+        }
+        else if (rightCon.GetComponent<VRTK_ControllerEvents>().touchpadPressed)
+        {
+            SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        }
+
     }
 
     void CountDown()
@@ -73,15 +68,15 @@ public class GameManagerScript : MonoBehaviour
     {
         if (score < maxScore)
         {
-            score++;                       
+            score++;
         }
-        
+
         if (score == maxScore)
-            {
-                WinSound.Play();
-            }
+        {
+            WinSound.Play();
+        }
     }
-          
+
     public void DecreaseScore()
     {
         if (score > 0)

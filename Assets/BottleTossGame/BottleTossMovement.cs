@@ -30,9 +30,12 @@ public class BottleTossMovement : MonoBehaviour
    
     // Update is called once per frame
     void Update () {
-    	if(!wasMoved) {
-
-	        if (Input.GetMouseButtonDown(0))
+        if (!wasMoved) {
+            if (Vector3.Distance(startPosition, transform.position) > 2f)  {
+                Invoke("Spawn", 1);
+                wasMoved = true;
+            }
+            if (Input.GetMouseButtonDown(0))
 	        {
 	            startSwipe = Camera.main.ScreenToViewportPoint(Input.mousePosition);
 	        }
@@ -57,10 +60,11 @@ public class BottleTossMovement : MonoBehaviour
         swipe.z = swipe.y / zFactor;
 
         rigidbody.AddForce(swipe * force, ForceMode.Impulse);
-
-		Invoke("Spawn", 1);
+        //Invoke("Spawn", 1);
     }
+
     void Spawn() {
+        Debug.Log("asdas");
         Instantiate(tossPrefab, startPosition, transform.rotation);
         Destroy(gameObject, 3);
     }

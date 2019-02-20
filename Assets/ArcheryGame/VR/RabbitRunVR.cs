@@ -9,15 +9,15 @@ public class RabbitRunVR : MonoBehaviour
     private bool isDead = false;
     private float breakForce = 150f;
     public GameObject gameManager;
-
     private Animator m_animator;
-
     private Vector3 startPos;
+    public AudioSource dieSound;
 
     // Use this for initialization
     void Start()
     {
         gameManager = GameObject.FindWithTag("GameManager");
+        Debug.Log(gameManager);
         GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.Continuous;
         m_animator = GetComponent<Animator>();
         m_animator.SetTrigger("Next");
@@ -51,14 +51,7 @@ public class RabbitRunVR : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag.Contains("Rabbit")) 
-        {
-            Debug.Log(gameObject.GetComponent<Collider>());
-            Physics.IgnoreCollision(collision.collider, gameObject.GetComponent<Collider>());
-            Destroy(gameObject);
-        }
         var collisionForce = GetCollisionForce(collision);
-
         if (collisionForce > 0)
         {
             Die();
@@ -78,7 +71,13 @@ public class RabbitRunVR : MonoBehaviour
                 gameManager.GetComponent<GameManagerScript>().DecreaseScore();
             }
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
-            Destroy(gameObject, 0);
+            dieSound.Play();
+            foreach (Transform child in transform)
+            {
+                child.transform.gameObject.SetActive(false);
+            }
+            Destroy(gameObject, 2);
+            isDead = true;
         }
     }
 

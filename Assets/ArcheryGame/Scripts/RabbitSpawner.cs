@@ -14,7 +14,7 @@ public class RabbitSpawner : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        InvokeRepeating("InstantiateEvilRabbit", 0, 5);
+        InvokeRepeating("InstantiateEvilRabbit", 0, 1);
         InvokeRepeating("InstantiateGoodRabbit", 0, 3);
     }
 
